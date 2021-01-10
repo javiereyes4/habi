@@ -1,0 +1,49 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #5701b3;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #6000ce;
+}
+
+.active {
+  background-color: #2b0259;
+}
+
+.language {
+  float: right;
+}
+
+.languageImgContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  padding-top: 10px;
+}
+
+.languageImageEn {
+  width: 30px;
+  height: 20px;
+}
+
+.languageImageEs {
+  width: 30px;
+  height: 30px;
+}
