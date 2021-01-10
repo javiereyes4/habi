@@ -1,19 +1,42 @@
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+import "./navbar.css";
+import en from "../../../assets/en.png";
+import es from "../../../assets/es.png";
+import { LOCALES } from "../../../i18n";
 
 function NavBar(props) {
   return (
     <ul>
       <li>
         <Link className="active" to="user">
-          usuario
+          <FormattedMessage id="user" />
         </Link>
       </li>
       <li>
-        <Link to="apto">Inmueble</Link>
+        <Link to="apto">
+          <FormattedMessage id="property" />
+        </Link>
       </li>
       <li className="language">
-        Lenguaje
-        {/* <a href="#about">About</a> */}
+        <div className="languageImgContainer">
+          <img
+            className="languageImageEn"
+            src={en}
+            alt="English Language"
+            onClick={() => {
+              props.changeLanguage(LOCALES.ENGLISH);
+            }}
+          />
+          <img
+            className="languageImageEs"
+            src={es}
+            alt="Spanish Language"
+            onClick={() => {
+              props.changeLanguage(LOCALES.SPANISH);
+            }}
+          />
+        </div>
       </li>
     </ul>
   );
