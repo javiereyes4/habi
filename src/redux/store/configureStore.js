@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { UserReducer } from "../reducers";
+import { UserReducer, PropertyReducer } from "../reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import logger from "redux-logger";
@@ -11,6 +11,7 @@ middleware.push(logger);
 
 const rootReducer = combineReducers({
   user: UserReducer,
+  property: PropertyReducer,
 });
 const configureStore = () => {
   const store = createStore(
