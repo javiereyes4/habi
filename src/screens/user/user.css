@@ -1,0 +1,36 @@
+.userContent {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  height: 60vh;
+  width: 30vw;
+  -webkit-box-shadow: 0px 0px 13px 6px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0px 0px 13px 6px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 13px 6px rgba(0, 0, 0, 0.09);
+}
+
+@media only screen and (max-width: 600px) {
+  .userContent {
+    width: 80vw;
+  }
+}
+input,
+select {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.labelForm {
+  align-self: flex-start;
+  margin-left: 20px;
+  color: #ccc;
+}

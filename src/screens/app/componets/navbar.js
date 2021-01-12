@@ -14,7 +14,7 @@ function NavBar(props) {
         </Link>
       </li>
       <li>
-        <Link to="apto">
+        <Link to="property">
           <FormattedMessage id="property" />
         </Link>
       </li>
