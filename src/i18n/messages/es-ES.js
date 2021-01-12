@@ -19,5 +19,6 @@ export default {
     address: "Dirección",
     price: "Precio",
     userRequred: "Debe registrar un usuario para poder registrar inmuebles",
+    getProperty: "Lista Propiedades",
   },
 };

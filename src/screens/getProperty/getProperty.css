@@ -1,0 +1,62 @@
+.getContent {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  height: 70vh;
+  width: 80vw;
+  -webkit-box-shadow: 0px 0px 13px 6px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0px 0px 13px 6px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 13px 6px rgba(0, 0, 0, 0.09);
+  overflow: scroll;
+  overflow-x: visible;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 600px) {
+  .getContent {
+    width: 80vw;
+  }
+}
+
+.tableProperty {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  height: inherit;
+}
+
+.tableProperty td,
+.tableProperty th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tableProperty tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tableProperty tr:hover {
+  background-color: #ddd;
+}
+
+.tableProperty th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #7802ff;
+  color: white;
+}
+
+.filterContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addressFilter {
+  margin-right: 10px;
+}

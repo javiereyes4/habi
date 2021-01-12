@@ -15,3 +15,11 @@ export const postPropertys = (body) => (dispatch) => {
   }
   return response;
 };
+
+export const getPropertys = () => async (dispatch) => {
+  const response = Object.values(await services.getProperty());
+  if (response) {
+    dispatch(postProperty(response));
+  }
+  return await response;
+};
