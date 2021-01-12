@@ -44,7 +44,7 @@ async function getService(path) {
 const services = {
   postUser: (body) => postService(body, "usuario.json"),
   postProperty: (body) => postService(body, "inmueble.json"),
-  getBooks: () => getService("books"),
+  getProperty: () => getService("inmueble.json"),
 };
 
 export { postService, getService, services };

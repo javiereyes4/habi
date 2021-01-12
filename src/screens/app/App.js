@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { User, Property } from "../index";
+import { User, Property, GetProperty } from "../index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./componets/navbar";
@@ -23,6 +23,9 @@ function App() {
             </Route>
             <Route path="/property">
               <Property />
+            </Route>
+            <Route path="/getProperty">
+              <GetProperty />
             </Route>
           </Switch>
         </div>

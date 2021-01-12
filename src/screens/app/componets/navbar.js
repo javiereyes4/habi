@@ -18,6 +18,11 @@ function NavBar(props) {
           <FormattedMessage id="property" />
         </Link>
       </li>
+      <li>
+        <Link to="getProperty">
+          <FormattedMessage id="getProperty" />
+        </Link>
+      </li>
       <li className="language">
         <div className="languageImgContainer">
           <img
