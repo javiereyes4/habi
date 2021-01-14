@@ -20,5 +20,6 @@ export default {
     price: "Price",
     userRequred: "You must register a user to be able to register properties",
     getProperty: "Property List",
+    select: "Select",
   },
 };
