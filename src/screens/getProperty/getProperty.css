@@ -60,3 +60,13 @@
 .addressFilter {
   margin-right: 10px;
 }
+
+.positionFilter {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.filterSelect {
+  width: 70px;
+  padding: 10px;
+}

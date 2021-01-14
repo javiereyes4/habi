@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./property.css";
 import Modal from "../../widgets/modal/modal";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { postPropertys } from "../../redux/actions/propertyActions";
+import {
+  postPropertys,
+  getUsersRegisters,
+} from "../../redux/actions/propertyActions";
 import { bindActionCreators } from "redux";
 import AddProperty from "./component/add_property";
 
@@ -12,8 +15,16 @@ function Property(props) {
   const [isModal, setIsModal] = useState(false);
   const [titleModal, setTitleModal] = useState(<FormattedMessage id="alert" />);
   const [errorModal, setErrorModal] = useState("");
+  const [isUserExist, setIsUserExist] = useState(false);
+  const [userSelect, setUserSelect] = useState("");
   let propertyArr = [];
   const idInmueble = "_" + Math.random().toString(36).substr(2, 9);
+
+  useEffect(async () => {
+    Object.keys(props.user).length === 0 && (await props.getUsersRegisters());
+    setIsUserExist(true);
+  }, []);
+
   const newProperty = (val, type, index) => {
     if (propertyArr[index] !== undefined && type === "change") {
       propertyArr[index] = {
@@ -21,10 +32,6 @@ function Property(props) {
         id_inmueble: idInmueble,
         ...val,
       };
-      console.log("propertyArr");
-      console.log(propertyArr);
-    } else {
-      console.log(propertyArr[index]);
     }
     if (
       type === "change" &&
@@ -34,7 +41,7 @@ function Property(props) {
       propertyArr = [
         ...propertyArr,
         {
-          idUsuario: props.user.user.id,
+          idUsuario: userSelect != "" ? userSelect : props.user.user.id,
           id_inmueble: idInmueble,
           ...val,
         },
@@ -54,21 +61,36 @@ function Property(props) {
       setErrorModal(<FormattedMessage id="fileRequired" />);
     } else {
       propertyArr.map((element) => {
-        const response = props.postPropertys(element);
+        props.postPropertys(element);
       });
       count === propertyArr.length && (window.location.href = "/property");
     }
   };
 
+  const adduserSelect = (e) => {
+    const value = e.target.value;
+    setUserSelect(value);
+  };
+
   return (
     <div className="propertyContent">
       {Object.keys(props.user).length !== 0 && (
-        <div className="userContentProperty">
-          <label className="titleUser">
-            <FormattedMessage id="user" />:
-          </label>
-          <label>{props.user.user.name}</label>
-        </div>
+        <>
+          <div className="userContentProperty">
+            <label className="titleUser">
+              <FormattedMessage id="user" />:
+            </label>
+            <label>{props.user.user.name}</label>
+            {isUserExist && (
+              <select className="userList" onChange={adduserSelect}>
+                <option value=""></option>
+                {props.user.user.map((element) => (
+                  <option value={element.id}>{element.name}</option>
+                ))}
+              </select>
+            )}
+          </div>
+        </>
       )}
       <AddProperty add={newProperty} index={0} />
       {addProperty.map((element, index) => (
@@ -92,7 +114,7 @@ function Property(props) {
 }
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ postPropertys }, dispatch);
+  bindActionCreators({ postPropertys, getUsersRegisters }, dispatch);
 
 function mapStateToProps(state) {
   return {

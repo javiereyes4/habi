@@ -9,21 +9,30 @@ import "./getProperty.css";
 function GetProperty(props) {
   const [property, setProperty] = useState([]);
   const [propertyFilter, setPropertyFilter] = useState([]);
-  useEffect(() => {
-    const getProp = async () => {
-      const listProperty = await props.getPropertys();
-      setProperty(listProperty);
-      setPropertyFilter(listProperty);
-    };
-    getProp();
+  useEffect(async () => {
+    const listProperty = await props.getPropertys();
+    setProperty(listProperty);
+    setPropertyFilter(listProperty);
   }, []);
 
   const filterName = (value) => {
     if (value !== "") {
-      const asd = property.filter((element) => element.address.includes(value));
-      setProperty(asd);
+      const newArray = property.filter((element) =>
+        element.address.includes(value)
+      );
+      setProperty(newArray);
     } else {
       setProperty(propertyFilter);
+    }
+  };
+
+  const getByNumRender = (e) => {
+    const pos = e.target.value;
+    const arr = propertyFilter;
+    if (pos === "" || pos === "+ 15") {
+      setProperty(arr);
+    } else {
+      setProperty(arr.slice(0, pos));
     }
   };
   return (
@@ -37,6 +46,16 @@ function GetProperty(props) {
             filterName(e.target.value);
           }}
         />
+        <label className="positionFilter">
+          <FormattedMessage id="select" />
+        </label>
+        <select className="filterSelect" onChange={getByNumRender}>
+          <option value=""></option>
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+          <option>+ 15</option>
+        </select>
       </div>
       <div className="getContent">
         <table className="tableProperty">

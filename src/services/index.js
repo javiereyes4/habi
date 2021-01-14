@@ -45,6 +45,7 @@ const services = {
   postUser: (body) => postService(body, "usuario.json"),
   postProperty: (body) => postService(body, "inmueble.json"),
   getProperty: () => getService("inmueble.json"),
+  getUsersRegister: () => getService("usuario.json"),
 };
 
 export { postService, getService, services };
